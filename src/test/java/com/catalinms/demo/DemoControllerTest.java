@@ -9,6 +9,7 @@ public class DemoControllerTest {
     @Test
     public void demoTest() {
         assertEquals(2, 2);
+        assertEquals(3, 3);
     }
 
 }
