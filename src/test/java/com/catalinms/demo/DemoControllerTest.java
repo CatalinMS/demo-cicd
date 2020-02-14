@@ -10,6 +10,7 @@ public class DemoControllerTest {
     public void demoTest() {
         assertEquals(2, 2);
         assertEquals(3, 3);
+        assertEquals(4, 4);
     }
 
 }
