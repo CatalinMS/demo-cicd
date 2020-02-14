@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DemoControllerTest {
 
     @Test
-    public void demoTest() {
-        assertEquals(2, 2);
-        assertEquals(3, 3);
-        assertEquals(4, 4);
-        assertEquals(5, 5;
+    public void demoTestPass() {
+        assertEquals(1, 1);
+    }
+
+    @Test
+    public void demoTestFail() {
+        assertEquals(1, 2);
     }
 
 }

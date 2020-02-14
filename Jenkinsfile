@@ -6,8 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
-                sh 'echo "hello pipeline"'
+                sh './gradlew clean build --no-daemon'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew clean test --no-daemon'
             }
         }
     }
