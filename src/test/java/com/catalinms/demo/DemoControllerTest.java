@@ -11,6 +11,7 @@ public class DemoControllerTest {
         assertEquals(2, 2);
         assertEquals(3, 3);
         assertEquals(4, 4);
+        assertEquals(5, 5;
     }
 
 }
