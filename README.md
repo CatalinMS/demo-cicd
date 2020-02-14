@@ -1,2 +1,2 @@
 # Sandbox project
-Demo project to play with ci/cd pipeline
+Demo project to play with ci/cd pipeline.
