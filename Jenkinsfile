@@ -11,7 +11,11 @@ pipeline {
         }
         stage ('Docker build') {
             steps {
-                sh 'docker build -t catalinms/demo:latest .'
+                def customImage = docker.build("my-image:letest")
+
+                customImage.inside {
+                    sh 'make test'
+                }
             }
         }
     }
