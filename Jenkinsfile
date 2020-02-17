@@ -9,5 +9,10 @@ pipeline {
                 sh './gradlew clean build'
             }
         }
+        stage ('Docker build') {
+            steps {
+                sh 'docker build -t catalinms/demo:latest .'
+            }
+        }
     }
 }
