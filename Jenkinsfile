@@ -1,21 +1,11 @@
 pipeline {
-    agent any
-    options {
-        skipStagesAfterUnstable()
+    agent {
+        docker { image 'node:7-alpine' }
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh './gradlew clean build'
-            }
-        }
-        stage ('Docker build') {
-            steps {
-                def customImage = docker.build("my-image:letest")
-
-                customImage.inside {
-                    sh 'make test'
-                }
+                sh 'node --version'
             }
         }
     }
