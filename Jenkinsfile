@@ -16,7 +16,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     sh 'echo $USERNAME'
                     echo USERNAME
-                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                     sh 'docker push catalinms/demo-cicd:latest'
                 }
             }
