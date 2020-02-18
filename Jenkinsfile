@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build -t catalinms/demo-cicd:latest .'
+                sh 'docker build --rm -t catalinmoldovan/demo-cicd:latest .'
             }
         }
         stage('Docker Push') {
@@ -17,7 +17,7 @@ pipeline {
                     sh 'echo $USERNAME'
                     echo USERNAME
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh 'docker push catalinms/demo-cicd:latest'
+                    sh 'docker push catalinmoldovan/demo-cicd:latest'
                 }
             }
         }
