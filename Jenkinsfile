@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build --rm -t catalinmoldovan/demo-cicd:latest .'
+                docker.build("catalinmoldovan/demo-cicd:latest")
             }
         }
         stage('Docker Push') {
