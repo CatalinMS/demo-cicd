@@ -23,11 +23,16 @@ spec:
             httpGet:
               port: 8090
               path: /actuator/health
-              initialDelaySeconds: 3
-              periodSeconds: 3
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 3
+            failureThreshold: 1
           livenessProbe:
             httpGet:
               port: 8090
               path: /actuator/info
-              initialDelaySeconds: 3
-              periodSeconds: 3
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 1
+            successThreshold: 1
