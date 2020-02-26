@@ -8,7 +8,6 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                echo '${env.BRANCH_NAME}-${env.BUILD_NUMBER}'
                 sh 'docker build --rm -t catalinmoldovan/demo-cicd:${BRANCH_NAME}-${BUILD_NUMBER} .'
             }
         }
@@ -16,7 +15,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh 'docker push catalinmoldovan/demo-cicd:latest'
+                    sh 'docker push catalinmoldovan/demo-cicd:${BRANCH_NAME}-${BUILD_NUMBER}'
                 }
             }
         }
