@@ -8,16 +8,18 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build --rm -t catalinmoldovan/demo-cicd:latest .'
+                echo env.BUILD_NUMBER
+                sh 'docker build --rm -t catalinmoldovan/demo-cicd:${BRANCH_NAME}-${BUILD_NUMBER} .'
             }
         }
         stage('Docker Push') {
+            when {
+                branch 'master'
+            }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh 'echo $USERNAME'
-                    echo USERNAME
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh 'docker push catalinmoldovan/demo-cicd:latest'
+                    sh 'docker push catalinmoldovan/demo-cicd:${BRANCH_NAME}-${BUILD_NUMBER}'
                 }
             }
         }
