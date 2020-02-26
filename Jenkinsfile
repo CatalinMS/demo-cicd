@@ -8,7 +8,10 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build --rm -t catalinmoldovan/demo-cicd:latest .'
+                echo env.BUILD_NUMBER
+                echo "env.BUILD_NUMBER"
+                echo 'echo $BUILD_NUMBER'
+                sh 'docker build --rm -t catalinmoldovan/demo-cicd:${BUILD_NUMBER} .'
             }
         }
         stage('Docker Push') {
