@@ -4,6 +4,7 @@ metadata:
   name: demo-app
   labels:
     app: demo-app
+  namespace: helloworldwebapp-staging
 spec:
   type: LoadBalancer
   selector:
