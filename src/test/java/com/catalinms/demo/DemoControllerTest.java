@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DemoControllerTest {
 
     @Test
-    public void demoTest() {
-        assertEquals(2, 2);
+    public void demoTestPass() {
+        assertEquals(1, 1);
     }
 
 }

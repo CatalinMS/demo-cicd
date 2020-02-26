@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: demo-app
+          image: catalinmoldovan/demo-cicd:latest
+          ports:
+            - containerPort: 8090
+          readinessProbe:
+            httpGet:
+              port: 8090
+              path: /actuator/health
+              initialDelaySeconds: 3
+              periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              port: 8090
+              path: /actuator/info
+              initialDelaySeconds: 3
+              periodSeconds: 3
