@@ -6,13 +6,14 @@ replicaCount: 2
 
 image:
   repository: catalinmoldovan/demo-cicd
-  buildTag: 0.1.0
+  tag: 0.1.0
   pullPolicy: IfNotPresent
   port: 8090
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+namespace: helloworldwebapp-staging
 
 podSecurityContext: {}
   # fsGroup: 2000

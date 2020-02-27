@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/name: demo-app
     app.kubernetes.io/instance: test
     app.kubernetes.io/version: "0.1.0"
+  namespace: helloworldwebapp-staging
 spec:
   type: LoadBalancer
   selector:
@@ -28,6 +29,7 @@ metadata:
     app.kubernetes.io/name: demo-app
     app.kubernetes.io/instance: test
     app.kubernetes.io/version: "0.1.0"
+  namespace: helloworldwebapp-staging
 spec:
   replicas: 2
   selector:
