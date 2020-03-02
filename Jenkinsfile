@@ -1,3 +1,7 @@
+def printStage(String stage) {
+    echo 'Current stage is: ' + stage
+}
+
 pipeline {
     agent any
     stages {
@@ -13,13 +17,15 @@ pipeline {
             }
         }
         stage('Docker Push') {
-            when {
-                branch 'master'
-            }
+//             when {
+//                 branch 'master'
+//             }
             steps {
+                printStage('docker push')
+
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh 'docker push catalinmoldovan/demo-cicd:${BRANCH_NAME}-${BUILD_NUMBER}'
+                    sh 'docker push catalinmoldovan/demo-cicd:latest'
                 }
             }
         }
