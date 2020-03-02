@@ -17,9 +17,9 @@ pipeline {
             }
         }
         stage('Docker Push') {
-            when {
-                branch 'master'
-            }
+//             when {
+//                 branch 'master'
+//             }
             steps {
                 printStage('docker push')
 
