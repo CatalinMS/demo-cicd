@@ -1,8 +1,5 @@
-def dockerPush(String username, String password) {
-    echo username
-    echo password
-    sh "docker login -u username -p password"
-    sh 'docker push catalinmoldovan/demo-cicd:latest'
+def printStage(String stage) {
+    echo 'Current stage is: ${stage}'
 }
 
 pipeline {
@@ -20,12 +17,13 @@ pipeline {
             }
         }
         stage('Docker Push') {
-//             when {
-//                 branch 'master'
-//             }
+            when {
+                branch 'master'
+            }
             steps {
+                printStage('docker push')
+
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    echo USERNAME
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                     sh 'docker push catalinmoldovan/demo-cicd:latest'
                 }
