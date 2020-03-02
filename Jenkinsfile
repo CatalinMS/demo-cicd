@@ -24,7 +24,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     echo USERNAME
-                    echo usernameVariable
+                    echo env.usernameVariable
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                     sh 'docker push catalinmoldovan/demo-cicd:latest'
                 }
