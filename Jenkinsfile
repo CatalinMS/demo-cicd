@@ -1,4 +1,6 @@
 def dockerPush(String username, String password) {
+    echo username
+    echo password
     sh "docker login -u username -p password"
     sh 'docker push catalinmoldovan/demo-cicd:latest'
 }
