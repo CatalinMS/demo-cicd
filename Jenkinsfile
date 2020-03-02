@@ -1,5 +1,5 @@
 def printStage(String stage) {
-    echo 'Current stage is: ${stage}'
+    echo 'Current stage is: ' + stage
 }
 
 pipeline {
