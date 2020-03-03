@@ -29,5 +29,13 @@ pipeline {
                 }
             }
         }
+        stage ('Helm deploy') {
+            agent {
+                docker { image 'alpine/helm:2.14.0' }
+            }
+            steps {
+                sh 'helm version'
+            }
+        }
     }
 }
